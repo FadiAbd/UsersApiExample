@@ -1,12 +1,32 @@
-﻿
-@model UsersApiExample.Response.BasePaginationResponse<UsersApiExample.Response.UserResponse>?
+﻿@model UsersApiExample.Response.BasePaginationResponse<UsersApiExample.Response.UserResponse>?
 
 @{
         ViewData["Title"] = "List of Artists";
   }
+ <!DOCTYPE html>
+ <html>
+<head>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+</html>
     <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-10 offset-md-2">
     <table class="table ">
         <thead>
                  <tr class="text-center">
@@ -22,7 +42,7 @@
             {
                 <tr>
                     <td>@user.Id</td>
-                    <td><p><a href="/DummyView/Details/id">@user.FirstName</a></p></td>
+                    <td><a asp-action="Details" asp-controller="DummyView" asp-route-id="@user.Id" >@user.FirstName</a></td>
                     <td>@user.LastName</td>
                     <td>@user.Title</td>
                     <td><img src="@user.Picture" style="min-width:130px" alt="picture" /></td>  
@@ -35,50 +55,3 @@
   </div>
  </div>
 
-@*@{
-        ViewData["Title"] = "List of Users";
-  }
-
-<h2>Users</h2>
- <div class="row">
-    <div class="col m-8 offset-md-2">
-    <table class="table ">
-        <thead>
- @if (Model is null)
-    {
-      <h1>None Found</h1>
-    }
-    else
-    {
-                    <table>
-                <tr class="text-center">
-                     <th>User Id</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                     <th>Title</th>
-                     <th>Picture</th>
-                 </tr>
-                 @foreach (var user in Model.Data)
-            {
-                <tr>
-                      <td>@user.Id</td>
-                    <td>@user.FirstName</td>
-                    <td>@user.LastName</td>
-                    <td>@user.Title</td>
-                    <td><img src="@user.Picture" alt="picture"/></td>
-                 </tr>
-            } 
-     </table>
-      }  
-                
-        </thead>
-         <tbody>
-          
-
-         </tbody>
-    
-  </div>
- </div>
-   
-
-*@

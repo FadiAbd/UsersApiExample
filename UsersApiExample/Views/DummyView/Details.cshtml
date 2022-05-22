@@ -1,82 +1,52 @@
-﻿@model UsersApiExample.Response.BasePaginationResponse<UsersApiExample.Response.UserDetailsResponse>
+﻿@model UsersApiExample.Response.UserDetailsResponse?
 
 @{
         ViewData["Title"] = " Details";
-  }
+ }
 
+
+@* @{
+    Layout = null;
+}*@
  
-
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>
+   <head>
+      
+    <title>Title</title>
+    </head>
+ <div class="row">
+    <div class="col-md-8 offset-md-2">
+    <table class="table ">
+<thead>
 <body>
-
-<h2>HTML Table</h2>
-
-    @if (Model is null)
+    <div>
+ @if (Model is null)
     {
-        <h1>None Found</h1>
+        <h1>Not Found</h1>
     }
     else
     {
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Picture</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Date Of Birth</th>
-                <th>Phone</th>
-                <th>Location</th>
-                <th>Register Date</th>
-                <th>Update Date</th>
-
-               
-        
-       
-            </tr>
-            @foreach (var user in Model.Data)
-            {
-                <tr>
-                    <td>@user.Id</td>
-                    <td>@user.Title</td>
-                    <td>@user.FirstName</td>
-                    <td>@user.LastName</td>
-                    <td><img src="@user.Picture" alt="picture"/></td>
-                    <td>@user.Gender</td
-                    <td>@user.Email</td
-                    <td>@user.DateOfBirth</td>
-                    <td>@user.Phone</td>
-                    <td>@user.Location</td>
-                    <td>@user.RegisterDate</td>
-                    <td>@user.UpdatedDate</td>
-
-                </tr>
-            }
-
-   
-        </table>
+        <h2>User Details</h2>
+        <img src="@Model.Picture" style="min-width:130px" alt="@Model.Title"/>
+        <p>First Name: @Model.FirstName</p>
+        <p>Last Name: @Model.LastName</p>
+        <p>Gender: @Model.Gender</p>
+        <p>Phone: @Model.Phone</p>
+        <p>Title: @Model.Title</p>
+        <p>Register Date: @Model.RegisterDate</p>                      
+        <p>Updated Date: @Model.UpdatedDate</p>                      
+        <p>Date Of Birth: @Model.DateOfBirth</p>                      
+                                             
+        <h2>Location</h2>
+        <p>Country: @Model.Location.Country</p>
+        <p>City: @Model.Location.City</p>
+        <p>State: @Model.Location.State</p>
+        <p>Street: @Model.Location.Street</p>
+        <p>Timezone: @Model.Location.Timezone</p>
     }
-</body>
-</html>
+    </div>
+    </body>
+    </thead>
+    </html>
+

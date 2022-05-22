@@ -11,17 +11,17 @@ namespace UsersApiExample.Controllers
         {
             _dummyApiServiceHelper = dummyApiServiceHelper;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
             var result = await _dummyApiServiceHelper.GetUsersAsync(30, 0, cancellationToken);
 
             return View(result);
         }
-
-        public async Task<IActionResult> Details(string userId,CancellationToken cancellationToken)
+        [HttpGet]
+        public async Task<IActionResult> Details(string id,CancellationToken cancellationToken)
         {
-            var result = await _dummyApiServiceHelper.GetByIdAsync("",cancellationToken);
+            var result = await _dummyApiServiceHelper.GetByIdAsync(id,cancellationToken);
 
             return View(result);
         }
