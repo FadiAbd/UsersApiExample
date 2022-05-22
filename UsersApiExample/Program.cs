@@ -1,7 +1,19 @@
+using UsersApiExample.Extensions;
+using UsersApiExample.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDummyApi(x =>
+{
+    x.ApiKey = builder.Configuration.GetValue<string>("DummyApi:ApiKey");
+    x.BaseUrl = builder.Configuration.GetValue<string>("DummyApi:BaseUrl");
+});
+
+builder.Services.AddTransient<IDummyApiServiceHelper, DummyApiServiceHelper>();
 
 var app = builder.Build();
 
